@@ -12,3 +12,10 @@ exports.findByPhone = async (phone) => {
   const [rows] = await db.execute(sql, [phone]);
   return rows[0];
 };
+
+exports.findById = async (id) => {
+  const query = "SELECT id, phone, city_id, created_at FROM users WHERE id = ?";
+  const [rows] = await db.execute(query, [id]);
+
+  return rows[0];
+};

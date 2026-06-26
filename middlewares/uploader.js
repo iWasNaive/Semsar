@@ -5,7 +5,7 @@ const path = require("path");
 // ۱. تنظیمات محل ذخیره و نام‌گذاری
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const dir = "./public/uploads/receipts";
+    const dir = "./public/uploads/ad_Image";
 
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
@@ -38,7 +38,7 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // محدودیت حجم: ۵ مگابایت
+  limits: { fileSize: 3 * 1024 * 1024 }, // محدودیت حجم: ۵ مگابایت
   fileFilter: fileFilter,
 });
 

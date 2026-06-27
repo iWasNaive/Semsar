@@ -14,7 +14,7 @@ exports.findByPhone = async (phone) => {
 };
 
 exports.findById = async (id) => {
-  const query = "SELECT id, phone, city_id, created_at FROM users WHERE id = ?";
+  const query = "SELECT phone, name, city_id, role FROM users WHERE id = ?";
   const [rows] = await db.execute(query, [id]);
 
   return rows[0];

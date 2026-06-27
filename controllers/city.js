@@ -12,3 +12,12 @@ exports.create = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.getAll = async (req, res, next) => {
+  try {
+    const cities = await Cities.getAll();
+    return res.status(200).json({ cities });
+  } catch (error) {
+    next(error);
+  }
+};

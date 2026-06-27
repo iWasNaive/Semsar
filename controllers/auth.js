@@ -11,7 +11,7 @@ exports.create = async (req, res, next) => {
 
     const userId = await User.create(user);
 
-    const token = jwt.sign({ id: userId }, process.env.secretKey);
+    const token = jwt.sign({ userId }, process.env.secretKey);
 
     res.cookie("carrot", token, {
       httpOnly: true,

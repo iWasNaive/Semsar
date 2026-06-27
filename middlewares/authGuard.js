@@ -4,8 +4,6 @@ const User = require("./../repositories/user");
 const protect = async (req, res, next) => {
   try {
     const token = req.cookies.carrot;
-    // console.log(token);
-
     if (!token) {
       return res
         .status(401)

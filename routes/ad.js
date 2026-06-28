@@ -6,18 +6,16 @@ const { roleGuard } = require("../middlewares/roleGuard");
 
 const router = express.Router();
 
-//user routes
 router
   .route("/")
   .post(authGuard, upload.array("images", 3), controller.create)
   .get(controller.showAds);
 
-router.route("/:id").get(controller.getad);
-
-//admin routes
 router
   .route("/pending-ads")
   .get(authGuard, roleGuard("admin"), controller.showPendingAds);
+
+router.route("/:id").get(controller.getad);
 
 router
   .route("/:id/status")

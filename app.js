@@ -16,17 +16,17 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:3001",
+    origin: "http://localhost:5173",
     credentials: true,
   }),
 );
 app.use(express.static("public"));
 
-app.use("/category", categoryRouter);
-app.use("/city", cityRouter);
-app.use("/auth", authRouter);
-app.use("/ad", adRouter);
-app.use("/bookmark", bookmarkRouter);
+app.use("/api/category", categoryRouter);
+app.use("/api/city", cityRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/ad", adRouter);
+app.use("/api/bookmark", bookmarkRouter);
 
 app.use(require("./middlewares/errHandler"));
 

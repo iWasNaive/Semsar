@@ -50,7 +50,7 @@ exports.showAds = async (req, res, next) => {
 
     const ads = await Ad.findAds(city_id, status);
     if (ads.length === 0) {
-      return res.status(400).json({ message: "no ads for show" });
+      return res.status(200).json({ message: "no ads for show", data: [] });
     }
     return res.status(200).json({ ads });
   } catch (error) {
@@ -62,6 +62,10 @@ exports.getad = async (req, res, next) => {
   try {
     const { id } = req.params;
     const ad = await Ad.findAdById(id);
+
+    if (!ad) {
+      return res.status(404).json({ message: "آگهی پیدا نشد" });
+    }
 
     let images = ad.all_images ? ad.all_images.split(",") : [];
 

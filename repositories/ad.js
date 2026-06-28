@@ -52,6 +52,7 @@ exports.findAds = async (city_id, status) => {
     ads.id,
     cities.name AS city,
     categories.name,
+    categories.id as category_id,
     ads.title,
     ads.price,
     ads.created_at,
@@ -76,6 +77,7 @@ exports.findAdById = async (ad_id) => {
     ads.title,
     ads.description,
     ads.price,
+    ads.dynamic_properties,
     users.phone AS user_phone,
     cities.name AS city,
     GROUP_CONCAT(ad_images.image_url) AS all_images 

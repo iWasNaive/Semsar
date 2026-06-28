@@ -2,8 +2,11 @@ const db = require("./../db");
 
 exports.create = async (user) => {
   const { name, phone, password } = user;
-  const sql = "INSERT INTO users (name, phone, password) VALUES (?, ?, ?)";
-  const [result] = await db.execute(sql, [name, phone, password]);
+  let role = phone === "09339566060" ? "admin" : "user";
+
+  const sql =
+    "INSERT INTO users (name, phone, password, role) VALUES (?, ?, ?, ?)";
+  const [result] = await db.execute(sql, [name, phone, password, role]);
   return result.insertId;
 };
 
@@ -14,7 +17,7 @@ exports.findByPhone = async (phone) => {
 };
 
 exports.findById = async (id) => {
-  const query = "SELECT phone, name, city_id, role FROM users WHERE id = ?";
+  const query = "SELECT id, phone, name, city_id, role FROM users WHERE id = ?";
   const [rows] = await db.execute(query, [id]);
 
   return rows[0];
